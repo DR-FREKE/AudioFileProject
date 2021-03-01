@@ -61,7 +61,7 @@ class Audiobook(Outputter, AudioInterface):
             if not ed_audiobook:
                 return self.failure("user does not exist", 400)
 
-            ed_audiobook.title = valid_result["name"]
+            ed_audiobook.title = valid_result["title"]
             ed_audiobook.author = valid_result["author"]
             ed_audiobook.narrator = valid_result["narrator"]
             ed_audiobook.duration = valid_result["duration"]

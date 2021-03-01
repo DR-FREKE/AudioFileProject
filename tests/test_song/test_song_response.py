@@ -25,13 +25,22 @@ class TestSongResponse(unittest.TestCase):
 
     def test_song_can_delete(self):
         """ test that song can be deleted from DB"""
+        num = str(9)
         response = requests.delete(
-            "http://localhost:9001/api/delete-audio/Song/8")
+            "http://localhost:9001/api/delete-audio/Song/"+num)
 
         self.assertEqual(response.status_code, 200)
 
     def test_song_can_update(self):
         """ test that song can be updated in DB"""
+
+        data = {"audiotype": "Song", "metadata": {
+            "duration": 37477, "name": "smalls world"}}
+
+        response = requests.put(
+            "http://localhost:9001/api/update-audio/Song/9", data=data)
+
+        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == "__main__":
