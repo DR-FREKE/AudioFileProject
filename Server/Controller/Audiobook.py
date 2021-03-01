@@ -36,7 +36,7 @@ class Audiobook(Outputter, AudioInterface):
                 AudiobookModel).filter_by(id=id).first()
 
             if not dl_audiobook:
-                return self.failure("user does not exist", 400)
+                return self.failure("audiobook does not exist", 400)
 
             db.session.delete(dl_audiobook)
             db.session.flush()
