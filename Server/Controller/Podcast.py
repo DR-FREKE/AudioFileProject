@@ -56,7 +56,7 @@ class Podcast(Outputter, AudioInterface):
                 PodcastModel).filter_by(id=id).first()
 
             if not dl_podcast:
-                return jsonify("user does not exist")
+                return self.failure("podcast does not exist", 400)
 
             dl_participant = db.session.query(
                 ParticipantModel).filter_by(podcast_id=dl_podcast.id).all()
@@ -89,7 +89,7 @@ class Podcast(Outputter, AudioInterface):
             ed_podcast = db.session.query(
                 PodcastModel).filter_by(id=id).first()
             if not ed_podcast:
-                return self.failure("user does not exist", 400)
+                return self.failure("podcast does not exist", 400)
 
             if valid_result["participants"]:
                 valid_result["podcast_id"] = ed_podcast.id

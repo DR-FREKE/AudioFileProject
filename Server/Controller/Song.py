@@ -35,7 +35,7 @@ class Song(Outputter, AudioInterface):
                 SongModel).filter_by(id=id).first()
 
             if not dl_song:
-                return jsonify("user does not exist")
+                return self.failure("song does not exist", 400)
 
             db.session.delete(dl_song)
             db.session.flush()
@@ -58,7 +58,7 @@ class Song(Outputter, AudioInterface):
             ed_song = db.session.query(
                 SongModel).filter_by(id=id).first()
             if not ed_song:
-                return self.failure("user does not exist", 400)
+                return self.failure("song does not exist", 400)
 
             ed_song.name = valid_result["name"]
             ed_song.duration = valid_result["duration"]
