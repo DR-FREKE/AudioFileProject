@@ -13,11 +13,44 @@ class TestSongValidator(unittest.TestCase):
             "metadata":
             {
                 "duration": 37477,
-                "name": "My Book",
+                "name": "my book",
             }
         }
         result = Validation.validateSong(data)
-        self.assertEqual(result["success"], True)
+        result = result["data"]["metadata"]
+        self.assertTrue(result["name"])
+
+    def test_duration_not_empty(self):
+        """ 
+        test that duration field is not empty
+
+        """
+        data = {
+            "audiotype": "Song",
+            "metadata":
+            {
+                "duration": 37477,
+                "name": "my book",
+            }
+        }
+        result = Validation.validateSong(data)
+        result = result["data"]["metadata"]
+        self.assertTrue(result["duration"])
+
+    def test_duration_is_number(self):
+        """ test that duration in number type """
+
+        data = {
+            "audiotype": "Song",
+            "metadata":
+            {
+                "duration": 37477,
+                "name": "my book",
+            }
+        }
+        result = Validation.validateSong(data)
+        result = result["data"]["metadata"]
+        self.assertEqual(type(result["duration"]), type(0.0))
 
 
 if __name__ == "__main__":

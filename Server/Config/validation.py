@@ -9,7 +9,7 @@ class Validation:
             "audiotype": Kanpai.String(error="audio type must be a string").required(error="audiotype is required"),
             "metadata": Kanpai.Object({
                 "name": Kanpai.String(error="Song name must be a string").max(100).required(error="name is required"),
-                "duration": Kanpai.Number(error="duration must be an int").required(error="duration is required")
+                "duration": Kanpai.Number(error="duration must be an int").min(0).required(error="duration is required")
             }).required(error="metadata is required")
         }).required(error="Invalid request body passed")
 
