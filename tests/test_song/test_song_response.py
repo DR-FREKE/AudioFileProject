@@ -6,6 +6,7 @@ class TestSongResponse(unittest.TestCase):
 
     def test_song_can_insert(self):
         """ test that song can be inserted into db """
+
         data = {"audiotype": "Song", "metadata": {
             "duration": 37477, "name": "small world"}}
         response = requests.post(
