@@ -17,7 +17,7 @@ class TestAudiobookResponse(unittest.TestCase):
             }
         }
         response = requests.post(
-            "http://localhost:9001/api/create-audio", data=data)
+            "http://localhost:9001/api/create-audio", json=data)
 
         success = response.json()
         self.assertEqual(success["success"], True)
@@ -32,7 +32,7 @@ class TestAudiobookResponse(unittest.TestCase):
 
     def test_audiobook_can_delete(self):
         """ test that audiobook can be deleted from DB"""
-        num = str(4)
+        num = str(5)
         response = requests.delete(
             "http://localhost:9001/api/delete-audio/Audiobook/"+num)
 
@@ -44,17 +44,17 @@ class TestAudiobookResponse(unittest.TestCase):
         data = {
             "audiotype": "Audiobook",
             "metadata": {
-                "duration": 37477,
-                "title": "another",
+                "title": "audiobook1",
+                "duration": 45678,
                 "author": "Solomon",
-                "narrator": "Ndiferke"
+                "narrator": "Aniefiok"
             }
         }
 
         num = str(3)
 
         response = requests.put(
-            "http://localhost:9001/api/update-audio/Audiobook/"+num, data=data)
+            "http://localhost:9001/api/update-audio/Audiobook/"+num, json=data)
 
         self.assertEqual(response.status_code, 200)
 

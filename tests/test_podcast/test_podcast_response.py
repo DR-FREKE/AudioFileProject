@@ -17,7 +17,7 @@ class TestPodcastResponse(unittest.TestCase):
             }
         }
         response = requests.post(
-            "http://localhost:9001/api/create-audio", data=data)
+            "http://localhost:9001/api/create-audio", json=data)
 
         success = response.json()
 
@@ -55,7 +55,7 @@ class TestPodcastResponse(unittest.TestCase):
         num = str(9)
 
         response = requests.put(
-            "http://localhost:9001/api/update-audio/Podcast/"+num, data=data)
+            "http://localhost:9001/api/update-audio/Podcast/"+num, json=data)
 
         self.assertEqual(response.status_code, 200)
 

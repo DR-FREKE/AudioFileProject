@@ -10,7 +10,7 @@ class TestSongResponse(unittest.TestCase):
         data = {"audiotype": "Song", "metadata": {
             "duration": 37477, "name": "small world"}}
         response = requests.post(
-            "http://localhost:9001/api/create-audio", data=data)
+            "http://localhost:9001/api/create-audio", json=data)
 
         success = response.json()
 
@@ -38,8 +38,10 @@ class TestSongResponse(unittest.TestCase):
         data = {"audiotype": "Song", "metadata": {
             "duration": 37477, "name": "smalls world"}}
 
+        num = str(9)
+
         response = requests.put(
-            "http://localhost:9001/api/update-audio/Song/9", data=data)
+            "http://localhost:9001/api/update-audio/Song/"+num, json=data)
 
         self.assertEqual(response.status_code, 200)
 
